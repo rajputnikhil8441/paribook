@@ -1,0 +1,177 @@
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #160b2d;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+/* WRAPPER */
+.main-container {
+  width: 100%;
+  max-width: 480px; /* Stops container from expanding on desktop */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* LOGO */
+.logo-box img {
+  width: 65%;
+  max-width: 260px;
+  margin: 25px auto 10px;
+  display: block;
+}
+
+/* LOGIN CARD */
+.login-card {
+  width: 100%;
+  background: linear-gradient(180deg, #87185f, #450044);
+  border: 3px solid #00c8ff;
+  border-radius: 22px;
+  padding: 22px;
+  margin-top: 15px;
+
+  /* screenshot feel */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* TOP BAR */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.back-arrow {
+  color: #fff;
+}
+
+.demo-btn {
+  background: #ffd000;
+  padding: 6px 18px;
+  border-radius: 20px;
+  color: #000;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* HEADINGS */
+.signin-title {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 10px;
+}
+
+.signin-sub {
+  text-align: center;
+  opacity: 0.9;
+  margin-bottom: 18px;
+}
+
+/* LABELS */
+label {
+  margin-top: 12px;
+  display: block;
+  font-size: 16px;
+  color: #fff;
+}
+
+.req {
+  color: #ffd000;
+}
+
+/* INPUT FIELDS */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-size: 17px;
+  margin-top: 6px;
+  background: #fff;
+  color: #000;
+}
+
+/* PASSWORD WRAPPER */
+.password-wrapper {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 14px;
+  right: 15px;
+  opacity: 0.6;
+  font-size: 18px;
+}
+
+/* FORGOT */
+.forgot-text {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* LOGIN BUTTON */
+.login-btn {
+  width: 100%;
+  background: #ffd000;
+  color: #000;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+/* SIGN UP */
+.signup-text {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.signup-text a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* APK DOWNLOAD BUTTON */
+.apk-download {
+  background: #4caf50;
+  padding: 15px;
+  margin-top: 25px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* DISCLAIMER */
+.disclaimer {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 18px;
+  line-height: 20px;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 400px) {
+  .logo-box img {
+    width: 72%;
+  }
+  .login-card {
+    padding: 18px;
+  }
+  .signin-title {
+    font-size: 24px;
+  }
+}
